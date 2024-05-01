@@ -115,7 +115,7 @@ dataloader:
         use_labels: true
         w_distance_transform: false
         ####### this is the quanti testset root, do not make a good name (lol)
-        sketch_path: /root/dataset/yasheng/FFHQ/test_qual/CROP_sketch_sota/
+        sketch_path: /root/yasheng/dataset/FFHQ/test_qual/CROP_sketch_sota/
         meta_sketch_path: configs/flists/test_finegrained_sketch_flists_quanti.txt
         path: /root/yasheng/dataset/FFHQ/test_qual/CROP/
 
