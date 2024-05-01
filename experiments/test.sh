@@ -1,6 +1,4 @@
 jobname=$1
-export http_proxy='http://agent.baidu.com:8188'
-export https_proxy='http://agent.baidu.com:8188'
 
 w_intermediate_result=True
 is_video_gen=False
