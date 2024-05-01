@@ -1,4 +1,4 @@
-## [ICMI 2023] Make Your Brief Stroke Real and Stereoscopic: 3D-Aware Simplified Sketch to Portrait Generation
+## [ICMI 2023] [Make Your Brief Stroke Real and Stereoscopic: 3D-Aware Simplified Sketch to Portrait Generation](https://hangz-nju-cuhk.github.io/projects/SSSP)
 <img src='./misc/method.jpg' width=800>
 
 
@@ -13,8 +13,9 @@
 
 
 # News
-- [2024/07]: Paper is accepted on ICMI 2023 (https://dl.acm.org/doi/abs/10.1145/3577190.3614106)
 - [2023/02]: Paper is on [arxiv](https://arxiv.org/abs/2302.06857)
+- [2023/07]: Paper is accepted on ICMI 2023 (https://dl.acm.org/doi/abs/10.1145/3577190.3614106)
+- [2023/10]: Video is updated on [Youtube](https://www.youtube.com/watch?v=GiOKbvr2U_E&t=20s).
 - [2024/05]: Demo and code released.
 
 
