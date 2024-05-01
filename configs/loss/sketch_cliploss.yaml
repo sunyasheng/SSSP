@@ -1,0 +1,7 @@
+clip_model_name: RN101
+clip_conv_loss_type: L2
+device: 'cuda'
+num_aug_clip: 1 # consider to delete it
+augemntations: affine # consider to delete it
+clip_fc_loss_weight: 0.0
+clip_conv_layer_weights: 0,0,1.0,1.0,0

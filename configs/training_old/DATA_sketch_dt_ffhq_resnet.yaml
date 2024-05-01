@@ -1,0 +1,138 @@
+# change from o4
+model:
+  target: image_synthesis.modeling.models.invert3D.SketchInverter
+  params:
+    is_train: true
+    inverter_config: 
+      target: image_synthesis.modeling.networks.nerf_inverter.eg3d_inverter.Eg3dInverter
+      params: 
+        encoder_config:
+          target: image_synthesis.modeling.networks.third_party.restyle-encoder.models.encoders.restyle_psp_encoders.ResNetBackboneEncoder
+          params:
+            n_styles: 1
+            input_nc: 4
+
+        # discriminator_config:
+        #   pretrain_path: OUTPUT/pretrained/ffhqrebalance_D.pth
+        #   D_reg_interval: 16
+        #   target: image_synthesis.modeling.networks.third_party.eg3d.dual_discriminator.DualDiscriminator
+        #   params:
+        #       block_kwargs: 
+        #         freeze_layers: 0
+        #       epilogue_kwargs:
+        #         mbstd_group_size: 4
+        #       channel_base: 32768
+        #       channel_max: 512
+        #       num_fp16_res: 4
+        #       conv_clamp: 256
+        #       c_dim: 25
+        #       img_resolution: 512
+        #       img_channels: 3
+
+
+        generator_config:
+          pretrain_path: OUTPUT/pretrained/ffhqrebalance.pth
+          target: image_synthesis.modeling.networks.third_party.eg3d.triplane.TriPlaneGenerator
+          params:
+              c_dim: 25
+              channel_base: 32768
+              channel_max: 512
+              conv_clamp: null
+              fused_modconv_default: inference_only
+              img_channels: 3
+              img_resolution: 512
+              mapping_kwargs:
+                  num_layers: 2
+              num_fp16_res: 0
+              rendering_kwargs:
+                avg_camera_pivot:
+                - 0
+                - 0
+                - 0.2
+                avg_camera_radius: 2.7
+                box_warp: 1
+                c_gen_conditioning_zero: false
+                c_scale: 1.0
+                clamp_mode: softplus
+                decoder_lr_mul: 1.0
+                density_reg: 0.25
+                density_reg_p_dist: 0.004
+                depth_resolution: 48
+                depth_resolution_importance: 48
+                disparity_space_sampling: false
+                image_resolution: 512
+                ray_end: 3.3
+                ray_start: 2.25
+                reg_type: l1
+                sr_antialias: true
+                superresolution_module: image_synthesis.modeling.networks.third_party.eg3d.superresolution.SuperresolutionHybrid8XDC
+                superresolution_noise_mode: none
+              sr_kwargs:
+                  channel_base: 32768
+                  channel_max: 512
+                  fused_modconv_default: inference_only
+              sr_num_fp16_res: 4
+              w_dim: 512
+              with_superresolution: false
+              z_dim: 512
+
+
+solver:
+  base_lr: 3.0e-6
+  adjust_lr: none # not adjust lr according to total batch_size
+  max_epochs: 3001
+  save_epochs: 1
+  save_iterations: 2000
+  validation_epochs: 300
+  sample_iterations: 1000 #30000      # how many iterations to perform sampling once ?
+  print_specific_things: True
+  audio_resume: True
+  # config for ema
+  ema:
+    decay: 0.99
+    update_interval: 10
+    device: cpu
+
+  clip_grad_norm:
+    target: image_synthesis.engine.clip_grad_norm.ClipGradNorm
+    params:
+      start_iteration: 0
+      end_iteration: 5000
+      max_norm: 0.5
+  optimizers_and_schedulers: # a list of configures, so we can config several optimizers and schedulers
+  - name: none # default is None
+    optimizer:
+      target: torch.optim.AdamW
+      params: 
+        betas: !!python/tuple [0.9, 0.96]
+        weight_decay: 4.5e-2
+    scheduler:
+      step_iteration: 1
+      target: image_synthesis.engine.lr_scheduler.ReduceLROnPlateauWithWarmup
+      params:
+        factor: 0.5
+        patience: 10000
+        min_lr: 1.0e-6
+        threshold: 1.0e-1
+        threshold_mode: rel
+        warmup_lr: 2.0e-5 # the lr to be touched after warmup
+        warmup: 100
+
+
+dataloader:
+  batch_size: 24
+  num_workers: 8
+  path: /root/dataset/FFHQ/train/CROP/
+  train_datasets: # a list of configures, so we can combine several schedulers
+    - target: image_synthesis.data.sketch_imagefolder_dataset.SketchImageFolderDataset
+      params:
+        use_labels: true
+        sketch_path: /root/dataset/FFHQ/train/CROP_sketch/
+        w_distance_transform: true
+
+  validation_datasets:
+    - target: image_synthesis.data.sketch_imagefolder_dataset.SketchImageFolderDataset
+      params:
+        use_labels: true
+        sketch_path: /root/dataset/FFHQ/train/CROP_sketch/
+        w_distance_transform: true

@@ -1,0 +1,1 @@
+from image_synthesis.modeling.models.invert3D import SketchInverter
