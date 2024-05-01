@@ -628,6 +628,7 @@ class Eg3dInverter(EG3DBaseModel):
         camera = input['camera']
         grad = input['grad']
         
+        import pdb; pdb.set_trace()
         # frontal_camera = self.frontal_camera_params.expand(grad.shape[0], *self.frontal_camera_params.shape[1:]).to(grad)
         # camera = frontal_camera
 

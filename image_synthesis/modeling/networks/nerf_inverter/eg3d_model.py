@@ -145,9 +145,8 @@ class EG3DBaseModel(nn.Module):
     def synthesize_image_dict(self, sample_latent_code, camera_params=None, neural_rendering_resolution=None, plane_modes=None,
                                          bbox=None, use_cached_backbone=False, cache_backbone=False):
         if camera_params is None:
-            camera_params = self.frontal_camera_params.expand(\
-                            sample_latent_code.shape[0], *self.frontal_camera_params.shape[1:]).to(sample_latent_code)
-        import pdb; pdb.set_trace();
+            camera_params = self.frontal_camera_params.expand(sample_latent_code.shape[0], *self.frontal_camera_params.shape[1:]).to(sample_latent_code)
+        # import pdb; pdb.set_trace();
         render_dict = self.generator.synthesis(sample_latent_code, camera_params, neural_rendering_resolution=neural_rendering_resolution,
                                 noise_mode='const', plane_modes=plane_modes, bbox=bbox, use_cached_backbone=use_cached_backbone, cache_backbone=cache_backbone)
         return render_dict
