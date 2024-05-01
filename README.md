@@ -1,5 +1,5 @@
 ## [ICMI 2023] Make Your Brief Stroke Real and Stereoscopic: 3D-Aware Simplified Sketch to Portrait Generation
-<img src='./misc/method.png' width=800>
+<img src='./misc/method.jpg' width=800>
 
 
 # Table of Content
