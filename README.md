@@ -51,6 +51,12 @@ Download [Pretrained model] ()
 bash experiments/test.sh sketch_w_128_quanti
 ```
 
+# Acknowledgements
+Many thanks to these excellent open source projects: 
+- [Eg3d] (https://github.com/NVlabs/eg3d)
+- [Stylegan2] (https://github.com/rosinality/stylegan2-pytorch)
+- [Sem2Nerf] (https://github.com/donydchen/sem2nerf)
+
 
 ## Citation
 If you find our paper and code useful for your research, please consider citing:
