@@ -77,7 +77,7 @@ class TriPlaneGenerator(torch.nn.Module):
             self.neural_rendering_resolution = neural_rendering_resolution
 
         # Create a batch of rays for volume rendering
-        import pdb; pdb.set_trace();
+        # import pdb; pdb.set_trace();
         ray_origins, ray_directions = self.ray_sampler(cam2world_matrix, intrinsics, neural_rendering_resolution, bbox=bbox)
 
         # Create triplanes by running StyleGAN backbone
