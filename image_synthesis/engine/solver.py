@@ -564,9 +564,11 @@ class Solver(object):
                     if 'pred_edge' in sample:
                         cat = torch.cat([F.interpolate(sample['pred_edge'][i:i+1]/255,size=shape,mode='bicubic').to(cat), cat], dim=-1)
                     
-                    torchvision.utils.save_image(cat, jpg_path, quality=100)
+                    # torchvision.utils.save_image(cat, jpg_path, quality=100)
+                    torchvision.utils.save_image(cat, jpg_path)
                 render_jpg_path = os.path.join(output_pred_render_dir, os.path.basename(input_path[i]))
-                torchvision.utils.save_image(sample['pred_image'][i:i+1]/255, render_jpg_path, quality=100)
+                # torchvision.utils.save_image(sample['pred_image'][i:i+1]/255, render_jpg_path, quality=100)
+                torchvision.utils.save_image(sample['pred_image'][i:i+1]/255, render_jpg_path)
             if is_video_gen is True:
                 mp4_save_path = render_jpg_path.replace('.jpg', '.mp4').replace('.png', '.mp4')
                 model.sample(batch, mp4_save_path=mp4_save_path, is_video_gen=is_video_gen)
