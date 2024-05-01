@@ -39,11 +39,11 @@ pip -r requirements.txt
 
 
 # Prepare Data
-- Download cropped version of test set on FFHQ (https://drive.google.com/file/d/1FWAAqSw3NNBQvZyJgCCnILJuSlqRs_mw/view?usp=share_link)
+- Download cropped version of test set on [FFHQ](https://drive.google.com/file/d/1FWAAqSw3NNBQvZyJgCCnILJuSlqRs_mw/view?usp=share_link)
 
 
 # Pretrained Model
-Download [Pretrained model] (https://drive.google.com/file/d/14uPOAgHiyee5IUE3ULuANJlTcitLyaKB/view?usp=share_link)
+Download [Pretrained model](https://drive.google.com/file/d/14uPOAgHiyee5IUE3ULuANJlTcitLyaKB/view?usp=share_link)
 
 
 # Testing
