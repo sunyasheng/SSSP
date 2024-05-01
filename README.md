@@ -43,7 +43,7 @@ pip -r requirements.txt
 
 
 # Pretrained Model
-Download [Pretrained model] ()
+Download [Pretrained model] (https://drive.google.com/file/d/14uPOAgHiyee5IUE3ULuANJlTcitLyaKB/view?usp=share_link)
 
 
 # Testing
