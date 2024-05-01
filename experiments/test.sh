@@ -15,7 +15,7 @@ run_test () {
     is_video_gen=$7
     # echo ${w_intermediate_result}
 
-    cmd="python3.8 test.py \
+    cmd="python3.7 test.py \
         --name ${jobname} \
         --config_file $config_path \
         --num_node 1 --tensorboard \
