@@ -5,10 +5,6 @@ res_root=$2
 gt_root='/root/dataset/FFHQ/test_qual/CROP'
 
 
-export http_proxy='http://agent.baidu.com:8188'
-export https_proxy='http://agent.baidu.com:8188'
-
-
 
 run_consistency_eval() {
     res_root=$1
