@@ -39,7 +39,7 @@ pip -r requirements.txt
 
 
 # Prepare Data
-- Download Cropped FFHQ Data ()
+- Download cropped version of test set on FFHQ (https://drive.google.com/file/d/1FWAAqSw3NNBQvZyJgCCnILJuSlqRs_mw/view?usp=share_link)
 
 
 # Pretrained Model
